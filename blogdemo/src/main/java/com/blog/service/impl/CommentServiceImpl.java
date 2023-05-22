@@ -17,14 +17,6 @@ public class CommentServiceImpl implements CommentService {
     private PostRepository postRepository;
 
 
-    public CommentServiceImpl(CommentRepository commentRepository) {
-
-        this.commentRepository = commentRepository;
-    }
-
-    public CommentServiceImpl() {
-
-    }
 
     public CommentServiceImpl(CommentRepository commentRepository, PostRepository postRepository) {
         this.commentRepository = commentRepository;
@@ -54,7 +46,7 @@ public class CommentServiceImpl implements CommentService {
         dto.setId(comment.getId());
         dto.setName(comment.getName());
         dto.setEmail(comment.getEmail());
-        dto.setBody(comment.getEmail());
+        dto.setBody(comment.getBody());
 
         return dto;
     }
@@ -62,10 +54,11 @@ public class CommentServiceImpl implements CommentService {
     private Comment mapToEntity(CommentDto commentDto){
         Comment comment = new Comment();
 
-        comment.setId(commentDto.getId());
+
         comment.setName(commentDto.getName());
         comment.setEmail(commentDto.getEmail());
-        comment.setBody(commentDto.getEmail());
+        comment.setBody(commentDto.getBody());
+
 
         return comment;
     }
