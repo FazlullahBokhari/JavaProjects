@@ -22,19 +22,23 @@ public class DemoJpa4Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		/*Book b1 = new Book();
 
-		b1.setId(1);
-		b1.setCost(30);
-		b1.setName("ABC");
-		b1.setAuthorName("ABC1234");*//*
+		b1.setId(3);
+		b1.setCost(320);
+		b1.setName("Fazlu");
+		b1.setAuthorName("Fazlu1234");
 
 		bookRepository.save(b1);*/
 
-		System.out.println(bookRepository.findAll());
+		/*System.out.println(bookRepository.findAll());
 
 		System.out.println(bookRepository.findByAuthorName("ABC1234"));
 
 		System.out.println(bookRepository.findByCost(30));
-		System.out.println(bookRepository.findById(1));
+		System.out.println(bookRepository.findById(1));*/
+
+		System.out.println(bookRepository.findByAuthor("Faiz1234"));
+		System.out.println(bookRepository.findByAuthors("ABC1234"));
+
 
 	}
 }
