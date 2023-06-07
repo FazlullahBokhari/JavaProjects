@@ -1,16 +1,29 @@
 package com.demojpa4.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "books")
 public class Book {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String authorName;
     private int cost;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_category_id", nullable = false)
+    private BookCategory bookCategory;
+
+    public BookCategory getBookCategory() {
+        return bookCategory;
+    }
+
+    public void setBookCategory(BookCategory bookCategory) {
+        this.bookCategory = bookCategory;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -42,6 +55,25 @@ public class Book {
 
     public int getCost() {
         return cost;
+    }
+
+    public Book() {
+    }
+
+    public Book(String name, String authorName, int cost) {
+        this.name = name;
+        this.authorName = authorName;
+        this.cost = cost;
+    }
+
+
+
+    public Book(String name, String authorName, int cost, int bookCategory) {
+        this.name = name;
+        this.authorName = authorName;
+        this.cost = cost;
+        this.bookCategory = new BookCategory();
+        this.bookCategory.setId(bookCategory);
     }
 
     @Override
